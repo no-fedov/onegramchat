@@ -9,6 +9,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
+import static com.javaacademy.onegramchat.util.UserServiceUtil.checkUserPassword;
+import static com.javaacademy.onegramchat.util.UserServiceUtil.checkUserRegistration;
+
 @RequiredArgsConstructor
 public class OneGramChat {
     private User currentUser;
@@ -25,14 +28,11 @@ public class OneGramChat {
 
     public void login() {
         User referenceUser = createUserFromConsole();
-        Optional<User> currentUser = userService.findUserByName(referenceUser.getName());
+        checkUserRegistration(referenceUser.getName(), userService);
 
-        if (currentUser.isEmpty()) {
-            throw new RuntimeException("Вы еще не зарегестрированы");
-        }
-        if (!currentUser.get().getPassword().equals(referenceUser.getPassword())) {
-            throw new RuntimeException("Неверный пароль, попробуйте снова");
-        }
+        Optional<User> currentUser = userService.findUserByName(referenceUser.getName());
+        checkUserPassword(currentUser.get(), referenceUser.getPassword());
+
         this.currentUser = currentUser.get();
         System.out.printf("%s, вы вошли в чат", this.currentUser.getName());
     }
