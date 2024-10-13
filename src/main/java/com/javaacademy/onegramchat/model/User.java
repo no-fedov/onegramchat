@@ -10,7 +10,6 @@ import java.util.List;
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-
 public class User {
     @NonNull
     @EqualsAndHashCode.Include
