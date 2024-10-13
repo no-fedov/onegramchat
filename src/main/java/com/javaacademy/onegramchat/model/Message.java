@@ -6,7 +6,6 @@ import lombok.experimental.FieldDefaults;
 @Data
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class Message {
     @NonNull
     String text;
