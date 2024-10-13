@@ -6,19 +6,24 @@ import lombok.experimental.FieldDefaults;
 import java.util.ArrayList;
 import java.util.List;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Builder(toBuilder = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
 public class User {
     @NonNull
     @EqualsAndHashCode.Include
     String name;
+
+    @NonNull
     String password;
-    @Builder.Default
+
     @NonNull
+    @Builder.Default
     List<Message> sentMessages = new ArrayList<>();
-    @Builder.Default
+
     @NonNull
+    @Builder.Default
     List<Message> receivedMessages = new ArrayList<>();
 }
