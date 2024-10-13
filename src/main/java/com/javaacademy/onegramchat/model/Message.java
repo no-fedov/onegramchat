@@ -1,16 +1,18 @@
-package com.javaacademy.onegramchat;
+package com.javaacademy.onegramchat.model;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 @Data
-@EqualsAndHashCode(exclude = "isIncome")
 public class Message {
+    @NonNull
     String text;
+    @EqualsAndHashCode.Exclude
     boolean isIncome;
+    @ToString.Exclude
     User sender;
+    @ToString.Exclude
     User recipient;
 }
