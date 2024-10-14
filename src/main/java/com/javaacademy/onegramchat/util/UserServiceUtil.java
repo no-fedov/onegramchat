@@ -5,27 +5,23 @@ import com.javaacademy.onegramchat.service.UserService;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import java.util.Optional;
-
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserServiceUtil {
     private static final int MIN_LENGTH_NAME = 5;
 
     public static void checkDuplicateUserName(String name, UserService service) {
-        Optional<User> currentUser = service.findUserByName(name);
-
-        if (currentUser.isPresent()) {
+        service.findUserByName(name).ifPresentOrElse(user -> {
             throw new RuntimeException(String.format("Имя %s уже занято. " +
                     "Зарегестрируйтесь под другим именем", name));
-        }
+        }, () -> {
+        });
     }
 
     public static void checkUserRegistration(String name, UserService service) {
-        Optional<User> currentUser = service.findUserByName(name);
-
-        if (currentUser.isEmpty()) {
+        service.findUserByName(name).ifPresentOrElse(user -> {
+        }, () -> {
             throw new RuntimeException("Вы еще не зарегестрированы");
-        }
+        });
     }
 
     public static void checkUserPassword(User user, String password) {
