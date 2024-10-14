@@ -20,13 +20,13 @@ public class OneGramChat {
     private final UserService userService;
 
     public void signIn() {
-        User newUser = createUserFromConsole();
+        User newUser = createUserFromConsole(scanner);
         userService.registerUser(newUser);
         System.out.printf("%s, вы успешно зарегестрировались%n", newUser.getName());
     }
 
     public void login() {
-        User referenceUser = createUserFromConsole();
+        User referenceUser = createUserFromConsole(scanner);
         checkUserRegistration(referenceUser.getName(), userService);
 
         Optional<User> currentUser = userService.findUserByName(referenceUser.getName());
@@ -42,16 +42,5 @@ public class OneGramChat {
         }
         System.out.printf("%s, досвидания возвращайтесь еще!", currentUser.getName());
         currentUser = null;
-    }
-
-    private User createUserFromConsole() {
-        System.out.println("Введите имя:");
-        String name = scanner.nextLine();
-        System.out.println("Введите пароль:");
-        String password = scanner.nextLine();
-        checkLengthName(name);
-        return User.builder()
-                .name(name)
-                .password(password).build();
     }
 }
