@@ -1,4 +1,4 @@
-package com.javaacademy.onegramchat;
+package com.javaacademy.onegramchat.chat;
 
 public enum MenuButton {
     LOGIN(1),

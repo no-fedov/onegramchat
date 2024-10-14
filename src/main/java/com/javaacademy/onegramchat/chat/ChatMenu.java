@@ -1,4 +1,4 @@
-package com.javaacademy.onegramchat;
+package com.javaacademy.onegramchat.chat;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
