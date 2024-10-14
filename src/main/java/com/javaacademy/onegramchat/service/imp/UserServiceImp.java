@@ -13,7 +13,7 @@ public class UserServiceImp implements UserService {
     private List<User> users = new ArrayList<>();
 
     @Override
-    public void signIn(User user) {
+    public void registerUser(User user) {
         checkDuplicateUserName(user.getName(), this);
         users.add(user);
     }

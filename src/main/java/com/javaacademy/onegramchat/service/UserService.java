@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface UserService {
     @NonNull
-    void signIn(User user);
+    void registerUser(User user);
 
     @NonNull
     Optional<User> findUserByName(String name);

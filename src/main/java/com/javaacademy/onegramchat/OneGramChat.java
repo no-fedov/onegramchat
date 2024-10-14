@@ -21,7 +21,7 @@ public class OneGramChat {
 
     public void signIn() {
         User newUser = createUserFromConsole();
-        userService.signIn(newUser);
+        userService.registerUser(newUser);
         System.out.printf("%s, вы успешно зарегестрировались%n", newUser.getName());
     }
 
