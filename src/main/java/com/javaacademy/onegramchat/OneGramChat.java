@@ -9,8 +9,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
-import static com.javaacademy.onegramchat.util.UserServiceUtil.checkUserPassword;
-import static com.javaacademy.onegramchat.util.UserServiceUtil.checkUserRegistration;
+import static com.javaacademy.onegramchat.util.UserServiceUtil.*;
 
 @RequiredArgsConstructor
 public class OneGramChat {
@@ -50,6 +49,7 @@ public class OneGramChat {
         String name = scanner.nextLine();
         System.out.println("Введите пароль:");
         String password = scanner.nextLine();
+        checkLengthName(name);
         return User.builder()
                 .name(name)
                 .password(password).build();

@@ -9,6 +9,8 @@ import java.util.Optional;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserServiceUtil {
+    private static final int MIN_LENGTH_NAME = 5;
+
     public static void checkDuplicateUserName(String name, UserService service) {
         Optional<User> currentUser = service.findUserByName(name);
 
@@ -29,6 +31,13 @@ public class UserServiceUtil {
     public static void checkUserPassword(User user, String password) {
         if (!user.getPassword().equals(password)) {
             throw new RuntimeException("Неверный пароль, попробуйте снова");
+        }
+    }
+
+    public static void checkLengthName(String name) {
+        if (name.length() < MIN_LENGTH_NAME) {
+            throw new RuntimeException(String.format("Длина имени должны бть больше %s символов",
+                    MIN_LENGTH_NAME));
         }
     }
 }
