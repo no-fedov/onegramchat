@@ -1,5 +1,6 @@
 package com.javaacademy.onegramchat;
 
+import com.javaacademy.onegramchat.model.Message;
 import com.javaacademy.onegramchat.model.User;
 import com.javaacademy.onegramchat.service.UserService;
 import lombok.NonNull;
@@ -42,5 +43,23 @@ public class OneGramChat {
         }
         System.out.printf("%s, досвидания возвращайтесь еще!", currentUser.getName());
         currentUser = null;
+    }
+
+    public void writeMessage(Scanner scanner) {
+        if (Objects.isNull(currentUser)) {
+            throw new RuntimeException("Вы не авторизованы!");
+        }
+        System.out.println("Введите получателя!");
+        String recipientName = scanner.nextLine();
+        User recipient = userService.findUserByName(recipientName)
+                .orElseThrow(() -> new RuntimeException("Получателя с таким именем не существует!"));
+
+        System.out.println("Введите сообщение:");
+        String text = scanner.nextLine();
+
+        Message message = Message.builder().recipient(recipient).text(text).sender(currentUser).isIncome(false).build();
+
+        currentUser.getSentMessages().add(message);
+        recipient.getReceivedMessages().add(message);
     }
 }
