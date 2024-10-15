@@ -12,10 +12,9 @@ public class UserServiceUtil {
     private static final int MIN_LENGTH_NAME = 5;
 
     public static void checkDuplicateUserName(String name, UserService service) {
-        service.findUserByName(name).ifPresentOrElse(user -> {
+        service.findUserByName(name).ifPresent(user -> {
             throw new RuntimeException(String.format("Имя %s уже занято. " +
                     "Зарегестрируйтесь под другим именем", name));
-        }, () -> {
         });
     }
 
