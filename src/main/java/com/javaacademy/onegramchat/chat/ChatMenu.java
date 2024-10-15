@@ -38,10 +38,7 @@ public class ChatMenu {
             case LOGOUT -> chat.logout();
             case WRITE -> chat.sendMessage();
             case READ -> chat.readMessage();
-            case EXIT -> {
-                chat.exit();
-                scanner.close();
-            }
+            case EXIT -> chat.exit();
         }
     }
 }
