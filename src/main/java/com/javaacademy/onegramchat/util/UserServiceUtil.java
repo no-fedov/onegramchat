@@ -56,14 +56,4 @@ public class UserServiceUtil {
             throw new RuntimeException("Вы не авторизованы!");
         }
     }
-
-    public static void addMessage(User currentUser, User recipient, Message message) {
-        if (!message.isIncome()) {
-            currentUser.getSentMessages().add(message);
-            recipient.getReceivedMessages().add(message);
-        } else {
-            currentUser.getReceivedMessages().add(message);
-            recipient.getSentMessages().add(message);
-        }
-    }
 }

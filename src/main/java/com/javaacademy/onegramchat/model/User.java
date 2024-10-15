@@ -25,4 +25,13 @@ public class User {
     @NonNull
     @Builder.Default
     List<Message> receivedMessages = new ArrayList<>();
+
+    @NonNull
+    public void addMessage(Message message) {
+        if (message.isIncome()) {
+            receivedMessages.add(message);
+        } else {
+            sentMessages.add(message);
+        }
+    }
 }

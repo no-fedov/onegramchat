@@ -56,7 +56,7 @@ public class OneGramChat {
                 .build();
         Message incomeMessage = outcomeMessage.toBuilder().isIncome(true).build();
 
-        addMessage(currentUser, recipient, outcomeMessage);
-        addMessage(currentUser, recipient, incomeMessage);
+        currentUser.addMessage(outcomeMessage);
+        recipient.addMessage(incomeMessage);
     }
 }
