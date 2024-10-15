@@ -1,5 +1,8 @@
 package com.javaacademy.onegramchat.chat;
 
+import lombok.Getter;
+
+@Getter
 public enum MenuButton {
     LOGIN(1),
     REGISTRATION(2),
@@ -12,9 +15,5 @@ public enum MenuButton {
 
     MenuButton(int number) {
         this.number = number;
-    }
-
-    public int getNumber() {
-        return number;
     }
 }
