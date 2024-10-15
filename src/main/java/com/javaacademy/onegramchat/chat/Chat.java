@@ -10,8 +10,6 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Scanner;
-
 @SuperBuilder
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
@@ -26,9 +24,6 @@ public abstract class Chat {
     @NonNull
     MessageService messageService;
 
-    @NonNull
-    Scanner scanner;
-
     public abstract void login();
 
     public abstract void registration();
@@ -41,6 +36,5 @@ public abstract class Chat {
 
     public final void exit() {
         isDisable = true;
-        scanner.close();
     }
 }
