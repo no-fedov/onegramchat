@@ -6,7 +6,6 @@ import com.javaacademy.onegramchat.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -38,17 +37,13 @@ public class OneGramChat {
     }
 
     public void logout() {
-        if (Objects.isNull(currentUser)) {
-            throw new RuntimeException("Перед тем как выйти, вы должны авторизоваться");
-        }
-        System.out.printf("%s, досвидания возвращайтесь еще!", currentUser.getName());
+        checkAuthorisation(currentUser);
+        System.out.printf("%s, до свидания возвращайтесь еще!", currentUser.getName());
         currentUser = null;
     }
 
     public void writeMessage(Scanner scanner) {
-        if (Objects.isNull(currentUser)) {
-            throw new RuntimeException("Вы не авторизованы!");
-        }
+        checkAuthorisation(currentUser);
         System.out.println("Введите получателя!");
         String recipientName = scanner.nextLine();
         User recipient = userService.findUserByName(recipientName)
@@ -57,9 +52,11 @@ public class OneGramChat {
         System.out.println("Введите сообщение:");
         String text = scanner.nextLine();
 
-        Message message = Message.builder().recipient(recipient).text(text).sender(currentUser).isIncome(false).build();
+        Message outcomeMessage = Message.builder().recipient(recipient).text(text).sender(currentUser).isIncome(false)
+                .build();
+        Message incomeMessage = outcomeMessage.toBuilder().isIncome(true).build();
 
-        currentUser.getSentMessages().add(message);
-        recipient.getReceivedMessages().add(message);
+        addMessage(currentUser, recipient, outcomeMessage);
+        addMessage(currentUser, recipient, incomeMessage);
     }
 }

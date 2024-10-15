@@ -1,10 +1,12 @@
 package com.javaacademy.onegramchat.util;
 
+import com.javaacademy.onegramchat.model.Message;
 import com.javaacademy.onegramchat.model.User;
 import com.javaacademy.onegramchat.service.UserService;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -48,5 +50,20 @@ public class UserServiceUtil {
         return User.builder()
                 .name(name)
                 .password(password).build();
+    }
+    public static void checkAuthorisation(User user) {
+        if (Objects.isNull(user)) {
+            throw new RuntimeException("Вы не авторизованы!");
+        }
+    }
+
+    public static void addMessage(User currentUser, User recipient, Message message) {
+        if (!message.isIncome()) {
+            currentUser.getSentMessages().add(message);
+            recipient.getReceivedMessages().add(message);
+        } else {
+            currentUser.getReceivedMessages().add(message);
+            recipient.getSentMessages().add(message);
+        }
     }
 }
