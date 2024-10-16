@@ -3,17 +3,20 @@ package com.javaacademy.onegramchat.chat;
 import com.javaacademy.onegramchat.service.MessageService;
 import com.javaacademy.onegramchat.service.UserService;
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
+
+import java.util.Scanner;
 
 @SuperBuilder
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
-public abstract class Chat {
+public abstract class ConsoleChat {
+    @NonNull
+    Scanner scanner;
+
     @NonNull
     UserService userService;
 
@@ -31,6 +34,8 @@ public abstract class Chat {
     public abstract void readMessage();
 
     public final void exit() {
+        System.out.println("Выключение чата");
+        scanner.close();
         System.exit(0);
     }
 }
