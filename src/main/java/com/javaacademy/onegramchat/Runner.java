@@ -24,13 +24,5 @@ public class Runner {
 
         ChatMenu menu = new ChatMenu(chat, scanner);
         menu.startChat();
-
-        UserService userService = new UserServiceImp();
-        OneGramChat oneGramChat = new OneGramChat(userService);
-
-        oneGramChat.signIn();
-
-        System.out.println();
-        oneGramChat.login();
     }
 }
