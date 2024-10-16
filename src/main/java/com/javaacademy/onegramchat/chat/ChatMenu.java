@@ -17,9 +17,7 @@ public class ChatMenu {
     public void startChat() {
         while (true) {
             try {
-                // TODO: сделать печать меню в отдельном классе
-                System.out.println("\"1.войти\"\n\"2.новый\"\n\"3.выйти\"\n" +
-                        "\"4.написать\"\n\"5.прочитать\"\n\"6.exit\"");
+                MenuPrinter.printMenu();
                 int userAnswer = Integer.parseInt(scanner.nextLine());
                 Arrays.stream(MenuButton.values())
                         .filter(button -> userAnswer == button.getNumber())
