@@ -15,7 +15,7 @@ public class ChatMenu {
     private Scanner scanner;
 
     public void startChat() {
-        while (!chat.isDisable()) {
+        while (true) {
             try {
                 // TODO: сделать печать меню в отдельном классе
                 System.out.println("Печатается меню");
@@ -38,7 +38,10 @@ public class ChatMenu {
             case LOGOUT -> chat.logout();
             case WRITE -> chat.sendMessage();
             case READ -> chat.readMessage();
-            case EXIT -> chat.exit();
+            case EXIT -> {
+                scanner.close();
+                chat.exit();
+            }
         }
     }
 }

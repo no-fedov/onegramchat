@@ -14,10 +14,6 @@ import lombok.experimental.SuperBuilder;
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
 public abstract class Chat {
-    @Getter
-    @NonFinal
-    boolean isDisable;
-
     @NonNull
     UserService userService;
 
@@ -35,6 +31,6 @@ public abstract class Chat {
     public abstract void readMessage();
 
     public final void exit() {
-        isDisable = true;
+        System.exit(0);
     }
 }
