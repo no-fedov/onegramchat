@@ -11,15 +11,12 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-        // TODO: здесь будем запускать чат
-        System.out.println("Hello World");
-
         Scanner scanner = new Scanner(System.in);
 
         UserService userService = new UserServiceImp();
         MessageService messageService = new MessageServiceImp();
 
-        Chat chat =OneGramChat.builder()
+        Chat chat = OneGramChat.builder()
                 .userService(userService)
                 .messageService(messageService)
                 .build();
