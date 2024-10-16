@@ -9,7 +9,7 @@ import java.util.Scanner;
 @RequiredArgsConstructor
 public class ChatMenu {
     @NonNull
-    private Chat chat;
+    private ConsoleChat chat;
 
     @NonNull
     private Scanner scanner;
@@ -18,15 +18,16 @@ public class ChatMenu {
         while (true) {
             try {
                 // TODO: сделать печать меню в отдельном классе
-                System.out.println("Печатается меню");
-                int userAnswer = scanner.nextInt();
+                System.out.println("\"1.войти\"\n\"2.новый\"\n\"3.выйти\"\n" +
+                        "\"4.написать\"\n\"5.прочитать\"\n\"6.exit\"");
+                int userAnswer = Integer.parseInt(scanner.nextLine());
                 Arrays.stream(MenuButton.values())
                         .filter(button -> userAnswer == button.getNumber())
                         .findFirst()
                         .ifPresentOrElse(this::menuAction,
                                 () -> System.out.println("Неверный ввод"));
             } catch (Exception e) {
-                System.out.println("Сбои программы");
+                System.out.println("Ошибка: " + e.getMessage());
             }
         }
     }
@@ -38,10 +39,7 @@ public class ChatMenu {
             case LOGOUT -> chat.logout();
             case WRITE -> chat.sendMessage();
             case READ -> chat.readMessage();
-            case EXIT -> {
-                scanner.close();
-                chat.exit();
-            }
+            case EXIT -> chat.exit();
         }
     }
 }

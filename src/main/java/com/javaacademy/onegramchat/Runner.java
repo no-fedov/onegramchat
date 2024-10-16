@@ -1,7 +1,7 @@
 package com.javaacademy.onegramchat;
 
-import com.javaacademy.onegramchat.chat.Chat;
 import com.javaacademy.onegramchat.chat.ChatMenu;
+import com.javaacademy.onegramchat.chat.ConsoleChat;
 import com.javaacademy.onegramchat.service.MessageService;
 import com.javaacademy.onegramchat.service.UserService;
 import com.javaacademy.onegramchat.service.imp.MessageServiceImp;
@@ -16,7 +16,8 @@ public class Runner {
         UserService userService = new UserServiceImp();
         MessageService messageService = new MessageServiceImp();
 
-        Chat chat = OneGramChat.builder()
+        ConsoleChat chat = OneGramChat.builder()
+                .scanner(scanner)
                 .userService(userService)
                 .messageService(messageService)
                 .build();
