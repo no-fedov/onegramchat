@@ -1,10 +1,11 @@
 package com.javaacademy.onegramchat;
 
+import com.javaacademy.onegramchat.model.Message;
 import com.javaacademy.onegramchat.chat.ConsoleChat;
 import com.javaacademy.onegramchat.model.User;
+
 import lombok.experimental.SuperBuilder;
 
-import java.util.Objects;
 import java.util.Optional;
 
 import static com.javaacademy.onegramchat.util.UserServiceUtil.*;
@@ -32,15 +33,27 @@ public class OneGramChat extends ConsoleChat {
 
     @Override
     public void logout() {
-        if (Objects.isNull(currentUser)) {
-            throw new RuntimeException("Перед тем как выйти, вы должны авторизоваться");
-        }
+        checkAuthorisation(currentUser);
         System.out.printf("%s, досвидания возвращайтесь еще!\n", currentUser.getName());
         currentUser = null;
     }
 
     @Override
     public void sendMessage() {
+        checkAuthorisation(currentUser);
+        System.out.println("Введите получателя!");
+        String recipientName = scanner.nextLine();
+        User recipient = userService.findUserByName(recipientName)
+                .orElseThrow(() -> new RuntimeException("Получателя с таким именем не существует!"));
+        System.out.println("Введите сообщение:");
+        String text = scanner.nextLine();
+        Message message = Message.builder()
+                .text(text)
+                .isIncome(false)
+                .sender(currentUser)
+                .recipient(recipient)
+                .build();
+        messageService.sendMessage(message);
     }
 
     @Override
