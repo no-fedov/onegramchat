@@ -3,7 +3,9 @@ package com.javaacademy.onegramchat.service.imp;
 import com.javaacademy.onegramchat.model.User;
 import com.javaacademy.onegramchat.service.UserService;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 import static com.javaacademy.onegramchat.util.UserServiceUtil.checkDuplicateUserName;
 
