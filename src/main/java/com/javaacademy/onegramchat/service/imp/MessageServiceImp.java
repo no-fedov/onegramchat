@@ -1,8 +1,8 @@
 package com.javaacademy.onegramchat.service.imp;
 
-import com.javaacademy.onegramchat.model.User;
 import com.javaacademy.onegramchat.model.Message;
 import com.javaacademy.onegramchat.service.MessageService;
+import com.javaacademy.onegramchat.model.User;
 
 public class MessageServiceImp implements MessageService {
 
