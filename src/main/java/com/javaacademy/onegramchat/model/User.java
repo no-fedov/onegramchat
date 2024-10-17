@@ -33,6 +33,7 @@ public class User {
     public List<Message> getSentMessages() {
         return new ArrayList<>(sentMessages);
     }
+
     @NonNull
     public List<Message> getReceivedMessages() {
         return new ArrayList<>(receivedMessages);
