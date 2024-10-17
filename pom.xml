@@ -6,7 +6,7 @@
 
     <groupId>com.javaacademy</groupId>
     <artifactId>onegramchat</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-FINAL</version>
 
     <properties>
         <java.version>17</java.version>
