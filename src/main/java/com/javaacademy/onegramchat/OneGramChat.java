@@ -6,6 +6,7 @@ import com.javaacademy.onegramchat.model.User;
 
 import lombok.experimental.SuperBuilder;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.javaacademy.onegramchat.util.UserServiceUtil.*;

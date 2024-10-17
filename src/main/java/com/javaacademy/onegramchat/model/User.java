@@ -31,12 +31,14 @@ public class User {
 
     @NonNull
     public List<Message> getSentMessages() {
-        return new ArrayList<>(sentMessages);
-    }
 
+        List<Message> sentMessagesCopy = new ArrayList<>(sentMessages);
+        return sentMessagesCopy;
+    }
     @NonNull
     public List<Message> getReceivedMessages() {
-        return new ArrayList<>(receivedMessages);
+        List<Message> receivedMessagesCopy = new ArrayList<>(receivedMessages);
+        return receivedMessagesCopy;
     }
 
     @NonNull
