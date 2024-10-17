@@ -10,7 +10,7 @@ import java.util.Optional;
 import static com.javaacademy.onegramchat.util.UserServiceUtil.checkDuplicateUserName;
 
 public class UserServiceImp implements UserService {
-    private final Map<String,User> users = new HashMap<>();
+    private final Map<String, User> users = new HashMap<>();
 
     @Override
     public void registerUser(User user) {

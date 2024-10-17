@@ -1,9 +1,8 @@
 package com.javaacademy.onegramchat;
 
-import com.javaacademy.onegramchat.model.Message;
 import com.javaacademy.onegramchat.chat.ConsoleChat;
+import com.javaacademy.onegramchat.model.Message;
 import com.javaacademy.onegramchat.model.User;
-
 import lombok.experimental.SuperBuilder;
 
 import java.util.Optional;
