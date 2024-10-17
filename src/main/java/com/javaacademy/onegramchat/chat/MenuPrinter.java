@@ -1,6 +1,9 @@
 package com.javaacademy.onegramchat.chat;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Cleanup;
+import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
