@@ -37,4 +37,13 @@ public class User {
         receivedMessagesCopy.addAll(0,receivedMessages);
         return receivedMessagesCopy;
     }
+
+    @NonNull
+    public void addMessage(Message message) {
+        if (message.isIncome()) {
+            receivedMessages.add(message);
+        } else {
+            sentMessages.add(message);
+        }
+    }
 }
