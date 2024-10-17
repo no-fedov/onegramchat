@@ -6,6 +6,7 @@ import com.javaacademy.onegramchat.model.User;
 
 import lombok.experimental.SuperBuilder;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.javaacademy.onegramchat.util.UserServiceUtil.*;
@@ -58,9 +59,7 @@ public class OneGramChat extends ConsoleChat {
 
     @Override
     public void readMessage() {
-        if (Objects.isNull(currentUser)) {
-            throw new RuntimeException("Вы не авторизованы");
-        }
+        checkAuthorisation(currentUser);
         messageService.readAllMessages(currentUser);
     }
 }

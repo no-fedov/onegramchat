@@ -9,11 +9,11 @@ public class MessageServiceImp implements MessageService {
 
     @Override
     public void readAllMessages(User user) {
-        for (int i = 0; i < user.getSentMessages().size(); i++){
-            System.out.println("письмо к {" + user.getSentMessages().get(i).getRecipient() + "}: {" + user.getSentMessages().get(i).getText() + "}");
+        for (Message sentMessage: user.getSentMessages()) {
+            System.out.println("письмо к {" + sentMessage.getRecipient() + "}: {" + sentMessage.getText() + "}");
         }
-        for (int i = 0; i < user.getReceivedMessages().size(); i++){
-            System.out.println("письмо от {" + user.getSentMessages().get(i).getSender() + "}: {" + user.getSentMessages().get(i).getText() + "}");
+        for (Message receivedMessage: user.getReceivedMessages()) {
+            System.out.println("письмо от {" + receivedMessage.getSender() + "}: {" + receivedMessage.getText() + "}");
         }
     }
     @Override
