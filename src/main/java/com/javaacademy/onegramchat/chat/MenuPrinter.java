@@ -1,9 +1,6 @@
 package com.javaacademy.onegramchat.chat;
 
-import lombok.AccessLevel;
-import lombok.Cleanup;
-import lombok.NoArgsConstructor;
-import lombok.SneakyThrows;
+import lombok.*;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -20,6 +17,7 @@ public class MenuPrinter {
         @Cleanup
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 
+        System.out.println();
         String line;
         while ((line = br.readLine()) != null) {
             System.out.println(line);
