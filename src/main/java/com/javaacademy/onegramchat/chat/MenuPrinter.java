@@ -1,22 +1,23 @@
 package com.javaacademy.onegramchat.chat;
 
-import lombok.AccessLevel;
-import lombok.Cleanup;
-import lombok.NoArgsConstructor;
-import lombok.SneakyThrows;
+import lombok.*;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MenuPrinter {
-    private static final String FILE_PATH = "src/main/resources/menu.txt";
+    private static final String FILE_NAME = "/menu.txt";
 
     @SneakyThrows
     public static void printMenu() {
         @Cleanup
-        BufferedReader br = new BufferedReader(new FileReader(FILE_PATH));
+        InputStream inputStream = MenuPrinter.class.getResourceAsStream(FILE_NAME);
+        @Cleanup
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 
+        System.out.println();
         String line;
         while ((line = br.readLine()) != null) {
             System.out.println(line);

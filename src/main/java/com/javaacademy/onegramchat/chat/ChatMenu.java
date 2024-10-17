@@ -23,7 +23,7 @@ public class ChatMenu {
                         .filter(button -> userAnswer == button.getNumber())
                         .findFirst()
                         .ifPresentOrElse(this::menuAction,
-                                () -> System.out.println("Неверный ввод"));
+                                () -> System.out.println("Неверный ввод\n"));
             } catch (Exception e) {
                 System.out.println("Ошибка: " + e.getMessage());
             }

@@ -16,18 +16,22 @@ public class User {
     String name;
 
     @NonNull
+    @ToString.Exclude
     String password;
 
     @NonNull
+    @ToString.Exclude
     @Builder.Default
     List<Message> sentMessages = new ArrayList<>();
 
     @NonNull
+    @ToString.Exclude
     @Builder.Default
     List<Message> receivedMessages = new ArrayList<>();
 
     @NonNull
     public List<Message> getSentMessages() {
+
         List<Message> sentMessagesCopy = new ArrayList<>(sentMessages);
         return sentMessagesCopy;
     }

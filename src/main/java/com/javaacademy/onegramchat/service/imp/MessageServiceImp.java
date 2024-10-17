@@ -2,8 +2,8 @@ package com.javaacademy.onegramchat.service.imp;
 
 import com.javaacademy.onegramchat.model.User;
 import com.javaacademy.onegramchat.model.Message;
-import com.javaacademy.onegramchat.model.User;
 import com.javaacademy.onegramchat.service.MessageService;
+import com.javaacademy.onegramchat.model.User;
 
 import java.util.List;
 import java.util.function.Function;
@@ -31,7 +31,7 @@ public class MessageServiceImp implements MessageService {
             System.out.printf(pattern, func.apply(message).getName(), message.getText());
         }
     }
-
+  
     @Override
     public void sendMessage(Message message) {
         Message reverseMessage = message.toBuilder()
@@ -41,5 +41,6 @@ public class MessageServiceImp implements MessageService {
         sender.addMessage(reverseMessage);
         User recipient = message.getRecipient();
         recipient.addMessage(message);
+        System.out.println("Сообщение отправлено");
     }
 }

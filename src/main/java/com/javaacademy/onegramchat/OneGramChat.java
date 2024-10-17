@@ -29,13 +29,13 @@ public class OneGramChat extends ConsoleChat {
     public void registration() {
         User newUser = createUserFromConsole(scanner);
         userService.registerUser(newUser);
-        System.out.printf("%s, вы успешно зарегестрировались\n", newUser.getName());
+        System.out.printf("%s, вы успешно зарегистрировались\n", newUser.getName());
     }
 
     @Override
     public void logout() {
         checkAuthorisation(currentUser);
-        System.out.printf("%s, досвидания возвращайтесь еще!\n", currentUser.getName());
+        System.out.printf("%s, до свидания возвращайтесь еще!\n", currentUser.getName());
         currentUser = null;
     }
 
