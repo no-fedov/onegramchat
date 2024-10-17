@@ -54,6 +54,7 @@ public class OneGramChat extends ConsoleChat {
                 .recipient(recipient)
                 .build();
         messageService.sendMessage(message);
+        System.out.printf("%s отправил сообщение пользователю %s", currentUser.getName(), recipient.getName());
     }
 
     @Override

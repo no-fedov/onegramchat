@@ -1,6 +1,5 @@
 package com.javaacademy.onegramchat.util;
 
-import com.javaacademy.onegramchat.model.Message;
 import com.javaacademy.onegramchat.model.User;
 import com.javaacademy.onegramchat.service.UserService;
 import lombok.AccessLevel;
@@ -50,6 +49,7 @@ public class UserServiceUtil {
                 .name(name)
                 .password(password).build();
     }
+
     public static void checkAuthorisation(User user) {
         if (Objects.isNull(user)) {
             throw new RuntimeException("Вы не авторизованы!");
