@@ -48,6 +48,6 @@ public class OneGramChat extends ConsoleChat {
         if (Objects.isNull(currentUser)) {
             throw new RuntimeException("Вы не авторизованы");
         }
-        else messageService.readAllMessages(currentUser);
+        messageService.readAllMessages(currentUser);
     }
 }

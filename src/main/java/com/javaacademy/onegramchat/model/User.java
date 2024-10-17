@@ -25,4 +25,16 @@ public class User {
     @NonNull
     @Builder.Default
     List<Message> receivedMessages = new ArrayList<>();
+
+    public List<Message> getSentMessages () {
+        List<Message> sentMessagesCopy = new ArrayList<>();
+        sentMessagesCopy.addAll(0,sentMessages);
+        return sentMessagesCopy;
+    }
+
+    public List<Message> getReceivedMessages () {
+        List<Message> receivedMessagesCopy = new ArrayList<>();
+        receivedMessagesCopy.addAll(0,receivedMessages);
+        return receivedMessagesCopy;
+    }
 }
