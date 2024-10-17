@@ -15,14 +15,14 @@ public class UserServiceUtil {
     public static void checkDuplicateUserName(String name, UserService service) {
         service.findUserByName(name).ifPresent(user -> {
             throw new RuntimeException(String.format("Имя %s уже занято. " +
-                    "Зарегестрируйтесь под другим именем", name));
+                    "Зарегистрируйтесь под другим именем", name));
         });
     }
 
     public static void checkUserRegistration(String name, UserService service) {
         service.findUserByName(name).ifPresentOrElse(user -> {
         }, () -> {
-            throw new RuntimeException("Вы еще не зарегестрированы");
+            throw new RuntimeException("Вы еще не зарегистрированы");
         });
     }
 

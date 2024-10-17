@@ -30,6 +30,16 @@ public class User {
     List<Message> receivedMessages = new ArrayList<>();
 
     @NonNull
+    public List<Message> getSentMessages() {
+        return new ArrayList<>(sentMessages);
+    }
+
+    @NonNull
+    public List<Message> getReceivedMessages() {
+        return new ArrayList<>(receivedMessages);
+    }
+
+    @NonNull
     public void addMessage(Message message) {
         if (message.isIncome()) {
             receivedMessages.add(message);
